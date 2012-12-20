@@ -41,6 +41,8 @@
     AppDelegate* delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     cityArr = delegate.cityArr;
     
+    NSLog(@"Test");
+    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
