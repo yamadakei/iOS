@@ -26,7 +26,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    _webView.delegate = self;
+    NSURL *url = [[NSURL alloc]initWithString:self.URLString];
+    [_webView loadRequest:[NSURLRequest requestWithURL:url]];
+    NSLog(@"%@",self.URLString);
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +39,27 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UIWebViewDelegate
+
+- (void) webViewDidStartLoad:(UIWebView *)webView
+{
+    NSLog(@"start");
+}
+
+- (void) webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSLog(@"finish");
+}
+
+- (void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    NSLog(@"%@",error);
+}
+
+#pragma mark - EventHandler
+
+- (IBAction)backToTheFirstView:(id)sender {
+    NSLog(@"back");
+    [self removeFromParentViewController];
+}
 @end

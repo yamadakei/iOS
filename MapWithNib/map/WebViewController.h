@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WebViewController : UIViewController
-{
-    
-}
+@interface WebViewController : UIViewController<UIWebViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic) NSString *URLString;
+- (IBAction)backToTheFirstView:(id)sender;
 
 @end

@@ -16,7 +16,6 @@
     if (self) {
         // Initialization code
     }
-    NSLog(@"view");
     return self;
 }
 

@@ -214,9 +214,4 @@
     
 }
 
-- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
-{
-    NSLog(@"finish");
-}
-
 @end
