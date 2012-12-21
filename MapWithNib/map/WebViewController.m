@@ -60,6 +60,6 @@
 
 - (IBAction)backToTheFirstView:(id)sender {
     NSLog(@"back");
-    [self removeFromParentViewController];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
