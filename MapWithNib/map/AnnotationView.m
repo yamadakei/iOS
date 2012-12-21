@@ -7,6 +7,7 @@
 //
 
 #import "AnnotationView.h"
+#import <UIKit/UIKit.h>
 
 @implementation AnnotationView
 @synthesize annoCityName;
@@ -47,12 +48,12 @@
         [self addSubview:annoCityImg];
         
         //URL
-        annoCityURL = [[UITextView alloc]initWithFrame:CGRectMake(30, 70, 250, 20)];
+        annoCityURL = [[AnnoURLTextView alloc]initWithFrame:CGRectMake(30, 70, 250, 20)];
         annoCityURL.text = cityURL;
         [annoCityURL setFont:[UIFont systemFontOfSize:9]];
         annoCityURL.backgroundColor = [UIColor clearColor];
         annoCityURL.editable = NO;
-        annoCityURL.dataDetectorTypes = UIDataDetectorTypeLink;
+//        annoCityURL.dataDetectorTypes = UIDataDetectorTypeLink;
         [self addSubview:annoCityURL];
         
     }
@@ -63,11 +64,6 @@
 {
     [super setAnnotation:annotation];
     [self setNeedsDisplay];
-}
-
-- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
-{
-    NSLog(@"finish");
 }
 
 /*

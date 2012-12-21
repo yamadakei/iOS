@@ -7,12 +7,17 @@
 //
 
 #import <MapKit/MapKit.h>
+#import "AnnoURLTextView.h"
 
 @interface AnnotationView : MKAnnotationView
 
 @property (nonatomic) UITextView *annoCityName;
 @property (nonatomic) UIImageView *annoCityImg;
-@property (nonatomic) UITextView *annoCityURL;
+@property (nonatomic) AnnoURLTextView *annoCityURL;
+
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+//-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+//-(UITextView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event;
 
 //- (id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier;
 

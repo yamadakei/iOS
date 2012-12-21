@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B20650D4168403670071C51F /* AnnoURLTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B20650D3168403670071C51F /* AnnoURLTextView.m */; };
+		B24315D216831B90002B1945 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24315D016831B90002B1945 /* WebViewController.m */; };
+		B24315D316831B90002B1945 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24315D116831B90002B1945 /* WebViewController.xib */; };
 		B24649E51670402E007965ED /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B24649E41670402E007965ED /* Annotation.m */; };
 		B27F8239167F0E7F006E06AE /* ViewForMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B27F8238167F0E7F006E06AE /* ViewForMap.m */; };
 		B27F823E167F170F006E06AE /* ViewForMap.xib in Resources */ = {isa = PBXBuildFile; fileRef = B27F823D167F170F006E06AE /* ViewForMap.xib */; };
@@ -37,6 +40,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B20650D2168403670071C51F /* AnnoURLTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnoURLTextView.h; sourceTree = "<group>"; };
+		B20650D3168403670071C51F /* AnnoURLTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnoURLTextView.m; sourceTree = "<group>"; };
+		B24315CF16831B90002B1945 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		B24315D016831B90002B1945 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		B24315D116831B90002B1945 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		B24649E31670402E007965ED /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
 		B24649E41670402E007965ED /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
 		B27F8237167F0E7F006E06AE /* ViewForMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewForMap.h; path = ../ViewForMap.h; sourceTree = "<group>"; };
@@ -143,6 +151,11 @@
 				B2FA77C616776890004ADA80 /* AnnotationView.h */,
 				B2FA77C716776890004ADA80 /* AnnotationView.m */,
 				B27F823D167F170F006E06AE /* ViewForMap.xib */,
+				B24315CF16831B90002B1945 /* WebViewController.h */,
+				B24315D016831B90002B1945 /* WebViewController.m */,
+				B24315D116831B90002B1945 /* WebViewController.xib */,
+				B20650D2168403670071C51F /* AnnoURLTextView.h */,
+				B20650D3168403670071C51F /* AnnoURLTextView.m */,
 			);
 			path = map;
 			sourceTree = "<group>";
@@ -240,6 +253,7 @@
 				B2FA78311679B1E5004ADA80 /* yamagata.png in Resources */,
 				B29E666F167EB0A700C4D9E0 /* AnnotationView.xib in Resources */,
 				B27F823E167F170F006E06AE /* ViewForMap.xib in Resources */,
+				B24315D316831B90002B1945 /* WebViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +272,8 @@
 				B24649E51670402E007965ED /* Annotation.m in Sources */,
 				B2FA77C816776890004ADA80 /* AnnotationView.m in Sources */,
 				B27F8239167F0E7F006E06AE /* ViewForMap.m in Sources */,
+				B24315D216831B90002B1945 /* WebViewController.m in Sources */,
+				B20650D4168403670071C51F /* AnnoURLTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
