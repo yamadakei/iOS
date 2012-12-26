@@ -13,11 +13,21 @@
 @end
 
 @implementation ViewController
+@synthesize webView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    NSURL *url = [NSURL URLWithString:@"http://codemafia.asia/~ldqy/test.php"];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    
+    request.HTTPMethod = @"POST";
+    
+    NSString *body = [NSString stringWithFormat:@"a=testA&b=testB&c=testC"];
+    request.HTTPBody = [body dataUsingEncoding:NSUTF8StringEncoding];
+    
+    [webView loadRequest:request];
 }
 
 - (void)didReceiveMemoryWarning
