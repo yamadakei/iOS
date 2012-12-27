@@ -39,7 +39,7 @@
     NSString *urlString = @"http://codemafia.asia/~ldqy/image1.php";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:urlString]];
-    [request setHTTPMethod:@"POST"];
+    request.HTTPMethod = @"POST";
     
     NSMutableData *body = [NSMutableData data];
     
