@@ -80,12 +80,12 @@
     
     customCell.viewForMap.center = CGPointMake(customCell.frame.size.width-customCell.viewForMap.frame.size.width/2, customCell.viewForMap.center.y);
     
-    activityView =[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    CGRect frame = activityView.frame;
-    frame.origin = CGPointMake(125, 85);
-    activityView.frame = frame;
-    activityView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-    activityView.tag = 2;
+//    activityView =[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    CGRect frame = activityView.frame;
+//    frame.origin = CGPointMake(125, 85);
+//    activityView.frame = frame;
+//    activityView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+//    activityView.tag = 2;
     
     [customCell.viewForMap.map addSubview:activityView];
     NSDictionary* dict = [cityArr objectAtIndex:indexPath.row];
@@ -104,7 +104,7 @@
     loc.latitude = myLatitude;
     loc.longitude = myLongitude;
     
-    [activityView startAnimating];
+//    [activityView startAnimating];
     
     MKCoordinateRegion rangeCoord = customCell.viewForMap.map.region;
     rangeCoord.center = loc;
