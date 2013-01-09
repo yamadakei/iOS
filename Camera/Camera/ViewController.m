@@ -13,12 +13,18 @@
 @end
 
 @implementation ViewController
+{
+    UIImagePickerController *imagePicker;
+    UIImage *image;
+}
 @synthesize imageVIew;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    image = [UIImage imageNamed:@"transparent_png_sample.png"];
+    imageVIew.image = image;
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,7 +71,6 @@
         return;
     }
     
-    UIImagePickerController *imagePicker;
     imagePicker = [[UIImagePickerController alloc]init];
     imagePicker.sourceType = sourceType;
     imagePicker.allowsEditing = YES;
@@ -93,9 +98,25 @@
     [originalImage drawInRect:rect];
     
     UIImage* shrinkedImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    CGRect reRect = CGRectMake(0, 0, shrinkedImage.size.width, shrinkedImage.size.height);
+    [shrinkedImage drawInRect:reRect];
+    [image drawInRect:reRect blendMode:kCGBlendModeNormal alpha:1.0];
+    
+    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    imageVIew.image = shrinkedImage;
+    imageVIew.image = result;
+    
+    if(image != nil)
+    {
+        UIImageWriteToSavedPhotosAlbum(result, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    }
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"保存終了" message:@"画像を保存しました" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
