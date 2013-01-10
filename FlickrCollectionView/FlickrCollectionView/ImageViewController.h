@@ -10,8 +10,8 @@
 #import "CollectionViewController.h"
 
 @interface ImageViewController : UIViewController
-{
-    
-}
+
+@property (strong, nonatomic) IBOutlet UIImageView *largeImageView;
+@property (nonatomic) UIImage *largeImage;
 
 @end

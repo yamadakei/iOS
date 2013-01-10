@@ -17,6 +17,9 @@
 NSString *const FlickrAPIKey = @"8cd91e0edba8fa02b50c2eed388b9090";
 
 @implementation CollectionViewController
+{
+    NSInteger photoIndex;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +38,7 @@ NSString *const FlickrAPIKey = @"8cd91e0edba8fa02b50c2eed388b9090";
     photoTitles = [[NSMutableArray alloc] init];
     photoSmallImageData = [[NSMutableArray alloc] init];
     photoURLsLargeImage = [[NSMutableArray alloc] init];
+    photoLargeImageData = [[NSMutableArray alloc]init];
     [self searchFlickrPhotos:@"fuck"];
     [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
     
@@ -74,18 +78,21 @@ NSString *const FlickrAPIKey = @"8cd91e0edba8fa02b50c2eed388b9090";
         
         // Build and save the URL to the large image so we can zoom
         // in on the image if requested
-		photoURLString = [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_m.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]];
-		[photoURLsLargeImage addObject:[NSURL URLWithString:photoURLString]];
-        [photoLargeImageData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:photoURLString]]];
+		NSString *largePhotoURLString = [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]];
+		[photoURLsLargeImage addObject:[NSURL URLWithString:largePhotoURLString]];
         
+        [photoLargeImageData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:largePhotoURLString]]];
 	}
     
-     [self.collectionView reloadData];
+    [self.collectionView reloadData];
+    
+    [self.activityIndicator stopAnimating];
     
 }
 
 -(void)searchFlickrPhotos:(NSString *)text
 {
+    [self.activityIndicator startAnimating];
     // Build the string to call the Flickr API
 	NSString *urlString = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&tags=%@&per_page=15&format=json&nojsoncallback=1", FlickrAPIKey, text];
     
@@ -118,12 +125,8 @@ NSString *const FlickrAPIKey = @"8cd91e0edba8fa02b50c2eed388b9090";
 {
     self.cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
 	NSData *imageData = [photoSmallImageData objectAtIndex:indexPath.row];
-    NSData *largeImageData = [photoLargeImageData objectAtIndex:indexPath.row];
     
 	self.cell.imageView.image = [UIImage imageWithData:imageData];
-    self.cell.largeImage = [UIImage imageWithData:largeImageData];
-    
-    NSLog(@"%@",self.cell.largeImage);
 
     return self.cell;
 }
@@ -133,18 +136,21 @@ NSString *const FlickrAPIKey = @"8cd91e0edba8fa02b50c2eed388b9090";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    photoIndex = indexPath.row;
     
     [self performSegueWithIdentifier:@"toSecondView" sender:self];
-    
+        
 }
 
-//#pragma mark - StoryBoard Methods
-//
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    if ([segue.identifier isEqualToString:@"toSecindView"]) {
-//        ImageViewController *destination = segue.destinationViewController;
-//    }
-//}
+#pragma mark - StoryBoard Methods
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"toSecondView"]) {
+        ImageViewController *destination = segue.destinationViewController;
+        NSData *largeImageData = [photoLargeImageData objectAtIndex:photoIndex];
+        destination.largeImage = [UIImage imageWithData:largeImageData];
+    }
+}
 
 @end

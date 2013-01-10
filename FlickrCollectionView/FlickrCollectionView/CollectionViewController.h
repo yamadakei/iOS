@@ -17,10 +17,9 @@
     NSMutableArray  *photoURLsLargeImage; // URL to larger image
     NSMutableArray  *photoLargeImageData;
     
-    UIActivityIndicatorView *activityIndicator;
-    
 }
 
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic) CollectionViewCell *cell;
 
 @end

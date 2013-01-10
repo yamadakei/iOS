@@ -10,13 +10,13 @@
 
 @interface ImageViewController ()
 {
-    IBOutlet UIImageView *largeImageView;
     CollectionViewController *collectionVIewController;
 }
 
 @end
 
 @implementation ImageViewController
+@synthesize largeImage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,9 +31,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    largeImageView.image = collectionVIewController.cell.largeImage;
+    self.largeImageView.image = largeImage;
     
-    NSLog(@"%@",collectionVIewController.cell.largeImage);
+    NSLog(@"%@",largeImage);
 
 }
 
