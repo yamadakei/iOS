@@ -7,7 +7,6 @@
 //
 
 #import "CollectionViewController.h"
-#import "CollectionViewell.h"
 #import "Json.h"
 
 @interface CollectionViewController ()
@@ -37,7 +36,7 @@ NSString *const FlickrAPIKey = @"8cd91e0edba8fa02b50c2eed388b9090";
     photoSmallImageData = [[NSMutableArray alloc] init];
     photoURLsLargeImage = [[NSMutableArray alloc] init];
     [self searchFlickrPhotos:@"fuck"];
-    [self.collectionView registerClass:[CollectionViewell class] forCellWithReuseIdentifier:@"Cell"];
+    [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
     
 }
 
@@ -77,8 +76,8 @@ NSString *const FlickrAPIKey = @"8cd91e0edba8fa02b50c2eed388b9090";
         // in on the image if requested
 		photoURLString = [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_m.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]];
 		[photoURLsLargeImage addObject:[NSURL URLWithString:photoURLString]];
+        [photoLargeImageData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:photoURLString]]];
         
-        NSLog(@"%d",[photoURLsLargeImage count]);
 	}
     
      [self.collectionView reloadData];
@@ -101,6 +100,8 @@ NSString *const FlickrAPIKey = @"8cd91e0edba8fa02b50c2eed388b9090";
     
 }
 
+#pragma mark - UICollectionViewDataSource Methods
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
@@ -115,12 +116,35 @@ NSString *const FlickrAPIKey = @"8cd91e0edba8fa02b50c2eed388b9090";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CollectionViewell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];	
+    self.cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
 	NSData *imageData = [photoSmallImageData objectAtIndex:indexPath.row];
+    NSData *largeImageData = [photoLargeImageData objectAtIndex:indexPath.row];
     
-	cell.imageView.image = [UIImage imageWithData:imageData];
+	self.cell.imageView.image = [UIImage imageWithData:imageData];
+    self.cell.largeImage = [UIImage imageWithData:largeImageData];
+    
+    NSLog(@"%@",self.cell.largeImage);
 
-    return cell;
+    return self.cell;
 }
+
+
+#pragma mark - UICollectionViewDelegate Methods
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    [self performSegueWithIdentifier:@"toSecondView" sender:self];
+    
+}
+
+//#pragma mark - StoryBoard Methods
+//
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    if ([segue.identifier isEqualToString:@"toSecindView"]) {
+//        ImageViewController *destination = segue.destinationViewController;
+//    }
+//}
 
 @end

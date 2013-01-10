@@ -7,14 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CollectionViewCell.h"
+#import "ImageViewController.h"
 
-@interface CollectionViewController : UICollectionViewController<UICollectionViewDataSource,UIApplicationDelegate>
+@interface CollectionViewController : UICollectionViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 {
     NSMutableArray  *photoTitles;         // Titles of images
     NSMutableArray  *photoSmallImageData; // Image data (thumbnail)
     NSMutableArray  *photoURLsLargeImage; // URL to larger image
+    NSMutableArray  *photoLargeImageData;
     
-    UIActivityIndicatorView *activityIndicator;      
+    UIActivityIndicatorView *activityIndicator;
+    
 }
+
+@property (nonatomic) CollectionViewCell *cell;
 
 @end

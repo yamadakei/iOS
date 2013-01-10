@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CollectionViewell : UICollectionViewCell
+@interface CollectionViewCell : UICollectionViewCell
+
+@property (nonatomic) UIImage *largeImage;
 @property (nonatomic) UIImageView *imageView;
 @end

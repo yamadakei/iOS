@@ -6,9 +6,9 @@
 //  Copyright (c) 2013年 山田 慶. All rights reserved.
 //
 
-#import "CollectionViewell.h"
+#import "CollectionViewCell.h"
 
-@implementation CollectionViewell
+@implementation CollectionViewCell
 
 - (id)initWithFrame:(CGRect)frame
 {

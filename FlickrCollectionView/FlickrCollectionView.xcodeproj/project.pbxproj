@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2A8DF9D169D93E000AE2736 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A8DF9C169D93E000AE2736 /* ImageViewController.m */; };
 		B2B69F10169D4C5700580D61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B69F0F169D4C5700580D61 /* UIKit.framework */; };
 		B2B69F12169D4C5700580D61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B69F11169D4C5700580D61 /* Foundation.framework */; };
 		B2B69F14169D4C5700580D61 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B69F13169D4C5700580D61 /* CoreGraphics.framework */; };
@@ -24,10 +25,12 @@
 		B2B69F63169D5CA600580D61 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B69F5B169D5CA600580D61 /* SBJsonBase.m */; };
 		B2B69F64169D5CA600580D61 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B69F5D169D5CA600580D61 /* SBJsonParser.m */; };
 		B2B69F65169D5CA600580D61 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B69F5F169D5CA600580D61 /* SBJsonWriter.m */; };
-		B2B69F68169D654A00580D61 /* CollectionViewell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B69F67169D654A00580D61 /* CollectionViewell.m */; };
+		B2B69F68169D654A00580D61 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B69F67169D654A00580D61 /* CollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B2A8DF9B169D93E000AE2736 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		B2A8DF9C169D93E000AE2736 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		B2B69F0B169D4C5700580D61 /* FlickrCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B69F0F169D4C5700580D61 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B2B69F11169D4C5700580D61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -57,8 +60,8 @@
 		B2B69F5D169D5CA600580D61 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		B2B69F5E169D5CA600580D61 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		B2B69F5F169D5CA600580D61 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		B2B69F66169D654A00580D61 /* CollectionViewell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewell.h; sourceTree = "<group>"; };
-		B2B69F67169D654A00580D61 /* CollectionViewell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewell.m; sourceTree = "<group>"; };
+		B2B69F66169D654A00580D61 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		B2B69F67169D654A00580D61 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +115,10 @@
 				B2B69F16169D4C5700580D61 /* Supporting Files */,
 				B2B69F32169D4CFA00580D61 /* CollectionViewController.h */,
 				B2B69F33169D4CFA00580D61 /* CollectionViewController.m */,
-				B2B69F66169D654A00580D61 /* CollectionViewell.h */,
-				B2B69F67169D654A00580D61 /* CollectionViewell.m */,
+				B2B69F66169D654A00580D61 /* CollectionViewCell.h */,
+				B2B69F67169D654A00580D61 /* CollectionViewCell.m */,
+				B2A8DF9B169D93E000AE2736 /* ImageViewController.h */,
+				B2A8DF9C169D93E000AE2736 /* ImageViewController.m */,
 			);
 			path = FlickrCollectionView;
 			sourceTree = "<group>";
@@ -227,7 +232,8 @@
 				B2B69F63169D5CA600580D61 /* SBJsonBase.m in Sources */,
 				B2B69F64169D5CA600580D61 /* SBJsonParser.m in Sources */,
 				B2B69F65169D5CA600580D61 /* SBJsonWriter.m in Sources */,
-				B2B69F68169D654A00580D61 /* CollectionViewell.m in Sources */,
+				B2B69F68169D654A00580D61 /* CollectionViewCell.m in Sources */,
+				B2A8DF9D169D93E000AE2736 /* ImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +350,7 @@
 				B2B69F31169D4C5700580D61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
