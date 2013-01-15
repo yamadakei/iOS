@@ -7,11 +7,9 @@
 //
 
 #import "ImageViewController.h"
+#import "ColorPalletViewController.h"
 
 @interface ImageViewController ()
-{
-    CollectionViewController *collectionVIewController;
-}
 
 @end
 
@@ -43,4 +41,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)createColorPallet:(id)sender {
+
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"toThirdView"]) {
+        ColorPalletViewController *secondDestination = segue.destinationViewController;
+        secondDestination.inputImage = largeImage;
+    }
+}
 @end

@@ -38,7 +38,7 @@ NSString *const FlickrAPIKey = @"8cd91e0edba8fa02b50c2eed388b9090";
     photoTitles = [[NSMutableArray alloc] init];
     photoSmallImageData = [[NSMutableArray alloc] init];
     photoURLsLargeImage = [[NSMutableArray alloc] init];
-    photoLargeImageData = [[NSMutableArray alloc]init];
+    photoLargeImageData = [[NSMutableArray alloc] init];
     [self searchFlickrPhotos:@"fuck"];
     [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
     
@@ -55,7 +55,7 @@ NSString *const FlickrAPIKey = @"8cd91e0edba8fa02b50c2eed388b9090";
     // Store incoming data into a string
 	NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
-    NSLog(@"CALLING:%@", jsonString);
+//    NSLog(@"CALLING:%@", jsonString);	
     
     // Create a dictionary from the JSON string
 	NSDictionary *results = [jsonString JSONValue];
@@ -84,10 +84,11 @@ NSString *const FlickrAPIKey = @"8cd91e0edba8fa02b50c2eed388b9090";
         [photoLargeImageData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:largePhotoURLString]]];
 	}
     
+    // （もとい）
+    // collectionViewがreloadするdデータは、どこで紐付けしてるんですか？
     [self.collectionView reloadData];
     
     [self.activityIndicator stopAnimating];
-    
 }
 
 -(void)searchFlickrPhotos:(NSString *)text
@@ -125,6 +126,8 @@ NSString *const FlickrAPIKey = @"8cd91e0edba8fa02b50c2eed388b9090";
 {
     self.cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
 	NSData *imageData = [photoSmallImageData objectAtIndex:indexPath.row];
+    
+    NSLog(@"cell called... index: %d", indexPath.row);
     
 	self.cell.imageView.image = [UIImage imageWithData:imageData];
 

@@ -37,7 +37,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="BWQ-AR-zVx" customClass="CollectionViewCell">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="myCell" id="BWQ-AR-zVx" customClass="CollectionViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="68" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -90,7 +90,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="PNr-Fu-aDy" kind="push" identifier="toThirdView" id="fD2-5F-Cbu"/>
+                                    <action selector="createColorPallet:" destination="e42-cI-2hc" eventType="touchUpInside" id="QNY-gh-EsA"/>
+                                    <segue destination="PNr-Fu-aDy" kind="push" identifier="toThirdView" id="MVv-dU-8A8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -112,16 +113,31 @@
             </objects>
             <point key="canvasLocation" x="384" y="-74"/>
         </scene>
-        <!--View Controller-->
+        <!--Color Pallet View Controller-->
         <scene sceneID="ruQ-7d-F4w">
             <objects>
-                <viewController id="PNr-Fu-aDy" sceneMemberID="viewController">
+                <viewController id="PNr-Fu-aDy" customClass="ColorPalletViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f23-u3-vWq">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="s4B-Ul-YL6">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="450" id="nWG-3O-aSj"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="s4B-Ul-YL6" firstAttribute="leading" secondItem="f23-u3-vWq" secondAttribute="leading" type="default" id="1n5-lB-hSN"/>
+                            <constraint firstItem="s4B-Ul-YL6" firstAttribute="trailing" secondItem="f23-u3-vWq" secondAttribute="trailing" type="default" id="Wu3-pB-5bz"/>
+                            <constraint firstItem="s4B-Ul-YL6" firstAttribute="top" secondItem="f23-u3-vWq" secondAttribute="top" type="default" id="qca-KU-JKf"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Fr9-Uv-7O2"/>
+                    <connections>
+                        <outlet property="imageView" destination="s4B-Ul-YL6" id="K9z-2B-Yko"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRf-P0-j5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -138,9 +154,16 @@
                 <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
             </relationships>
         </class>
+        <class className="ColorPalletViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ColorPalletViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
         <class className="ImageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ImageViewController.h"/>
             <relationships>
+                <relationship kind="action" name="createColorPallet:"/>
                 <relationship kind="outlet" name="largeImageView" candidateClass="UIImageView"/>
             </relationships>
         </class>
@@ -158,9 +181,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

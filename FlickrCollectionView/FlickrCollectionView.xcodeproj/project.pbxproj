@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B2A8DF9D169D93E000AE2736 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A8DF9C169D93E000AE2736 /* ImageViewController.m */; };
+		B2AAA0AD169EB94A00AB047D /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2AAA0AC169EB94A00AB047D /* opencv2.framework */; };
+		B2AAA0B0169EC4C300AB047D /* ColorPalletViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2AAA0AF169EC4C300AB047D /* ColorPalletViewController.mm */; };
+		B2AAA0B2169EC8AD00AB047D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2AAA0B1169EC8AD00AB047D /* QuartzCore.framework */; };
 		B2B69F10169D4C5700580D61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B69F0F169D4C5700580D61 /* UIKit.framework */; };
 		B2B69F12169D4C5700580D61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B69F11169D4C5700580D61 /* Foundation.framework */; };
 		B2B69F14169D4C5700580D61 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B69F13169D4C5700580D61 /* CoreGraphics.framework */; };
@@ -31,6 +34,10 @@
 /* Begin PBXFileReference section */
 		B2A8DF9B169D93E000AE2736 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		B2A8DF9C169D93E000AE2736 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		B2AAA0AC169EB94A00AB047D /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = FlickrCollectionView/opencv2.framework; sourceTree = "<group>"; };
+		B2AAA0AE169EC4C300AB047D /* ColorPalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPalletViewController.h; sourceTree = "<group>"; };
+		B2AAA0AF169EC4C300AB047D /* ColorPalletViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ColorPalletViewController.mm; sourceTree = "<group>"; };
+		B2AAA0B1169EC8AD00AB047D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B2B69F0B169D4C5700580D61 /* FlickrCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B69F0F169D4C5700580D61 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B2B69F11169D4C5700580D61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -69,9 +76,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2AAA0B2169EC8AD00AB047D /* QuartzCore.framework in Frameworks */,
 				B2B69F10169D4C5700580D61 /* UIKit.framework in Frameworks */,
 				B2B69F12169D4C5700580D61 /* Foundation.framework in Frameworks */,
 				B2B69F14169D4C5700580D61 /* CoreGraphics.framework in Frameworks */,
+				B2AAA0AD169EB94A00AB047D /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +90,7 @@
 		B2B69F00169D4C5700580D61 = {
 			isa = PBXGroup;
 			children = (
+				B2AAA0B1169EC8AD00AB047D /* QuartzCore.framework */,
 				B2B69F15169D4C5700580D61 /* FlickrCollectionView */,
 				B2B69F0E169D4C5700580D61 /* Frameworks */,
 				B2B69F0C169D4C5700580D61 /* Products */,
@@ -98,6 +108,7 @@
 		B2B69F0E169D4C5700580D61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B2AAA0AC169EB94A00AB047D /* opencv2.framework */,
 				B2B69F0F169D4C5700580D61 /* UIKit.framework */,
 				B2B69F11169D4C5700580D61 /* Foundation.framework */,
 				B2B69F13169D4C5700580D61 /* CoreGraphics.framework */,
@@ -119,6 +130,8 @@
 				B2B69F67169D654A00580D61 /* CollectionViewCell.m */,
 				B2A8DF9B169D93E000AE2736 /* ImageViewController.h */,
 				B2A8DF9C169D93E000AE2736 /* ImageViewController.m */,
+				B2AAA0AE169EC4C300AB047D /* ColorPalletViewController.h */,
+				B2AAA0AF169EC4C300AB047D /* ColorPalletViewController.mm */,
 			);
 			path = FlickrCollectionView;
 			sourceTree = "<group>";
@@ -234,6 +247,7 @@
 				B2B69F65169D5CA600580D61 /* SBJsonWriter.m in Sources */,
 				B2B69F68169D654A00580D61 /* CollectionViewCell.m in Sources */,
 				B2A8DF9D169D93E000AE2736 /* ImageViewController.m in Sources */,
+				B2AAA0B0169EC4C300AB047D /* ColorPalletViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +326,10 @@
 		B2B69F30169D4C5700580D61 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/FlickrCollectionView\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlickrCollectionView/FlickrCollectionView-Prefix.pch";
 				INFOPLIST_FILE = "FlickrCollectionView/FlickrCollectionView-Info.plist";
@@ -323,6 +341,10 @@
 		B2B69F31169D4C5700580D61 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/FlickrCollectionView\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlickrCollectionView/FlickrCollectionView-Prefix.pch";
 				INFOPLIST_FILE = "FlickrCollectionView/FlickrCollectionView-Info.plist";
