@@ -28,7 +28,7 @@
     WebViewController *webViewController = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
     TableViewController *currentController = self.window.rootViewController;
     webViewController.URLString = self.text;
-    [currentController presentViewController:webViewController animated:YES completion:nil];
+    [currentController presentViewController:webViewController animated:NO completion:nil];
 }
 
 
