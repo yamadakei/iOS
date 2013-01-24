@@ -50,12 +50,16 @@ NSString *const FlickrAPIKey = @"8cd91e0edba8fa02b50c2eed388b9090";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Custom Methods
+
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     // Store incoming data into a string
 	NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
-//    NSLog(@"CALLING:%@", jsonString);	
+//    NSLog(@"CALLING:%@", jsonString);
+    
+    NSLog(@"test");
     
     // Create a dictionary from the JSON string
 	NSDictionary *results = [jsonString JSONValue];
@@ -85,7 +89,7 @@ NSString *const FlickrAPIKey = @"8cd91e0edba8fa02b50c2eed388b9090";
 	}
     
     // （もとい）
-    // collectionViewがreloadするdデータは、どこで紐付けしてるんですか？
+    // collectionViewがreloadするデータは、どこで紐付けしてるんですか？
     [self.collectionView reloadData];
     
     [self.activityIndicator stopAnimating];
