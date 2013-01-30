@@ -8,18 +8,28 @@
 
 #import "ColorPalletViewController.h"
 #import "opencv2.framework/Headers/opencv.hpp"
+#import "NSMutableArray+Sort.h"
 
 @interface ColorPalletViewController ()
+{
+    NSMutableArray *blueArray;
+    NSMutableArray *greenArray;
+    NSMutableArray *redArray;
+}
 - (UIImage *)UIImageFromCVMat:(cv::Mat)cvMat;
 - (cv::Mat)cvMatFromUIImage:(UIImage *)image;
 - (cv::Mat)kMeansClustering:(cv::Mat)input;
-@end
 
-#define MAX_CLUSTERS 2 /* number of cluster */
+@end
 
 @implementation ColorPalletViewController
 @synthesize inputImage;
-@synthesize imageView;
+@synthesize firstView;
+@synthesize secondView;
+@synthesize thirdView;
+@synthesize forthView;
+@synthesize fifthView;
+
 
 #pragma mark - Custom Methods
 
@@ -27,6 +37,8 @@
 {
     NSData *data = [NSData dataWithBytes:cvMat.data length:cvMat.elemSize()*cvMat.total()];
     CGColorSpaceRef colorSpace;
+    
+    NSLog(@"%ld",8 * cvMat.elemSize());
     
     if (cvMat.elemSize() == 1) {
         colorSpace = CGColorSpaceCreateDeviceGray();
@@ -85,89 +97,29 @@
 }
 
 - (cv::Mat)kMeansClustering:(cv::Mat)input
-{    
-//    cv::Mat p = cv::Mat::zeros(input.cols*input.rows, 5, CV_32F); //5×5のcvMatを0で初期化
-//    cv::Mat bestLabels, centers, clustered;
-////    cv::vector<cv::Mat> bgr;
-//    cv::Mat bgr;
-//    input.convertTo(bgr, CV_32FC3);
-//    NSLog(@"channels:%d",input.channels());
-//    NSLog(@"test-1");
-//    bgr = bgr.reshape(1,input.rows*input.cols);
-//    NSLog(@"test0");
-////    cv::split(input, bgr); //inputをbgrに分割
-//    // i think there is a better way to split pixel bgr color
-////    for(int i=0; i<input.cols*input.rows; i++) {
-////        p.at<float>(i,0) = (i/input.cols) / input.rows;
-////        p.at<float>(i,1) = (i%input.cols) / input.cols;
-////        p.at<float>(i,2) = bgr[0].data[i] / 255.0;
-////        p.at<float>(i,3) = bgr[1].data[i] / 255.0;
-////        p.at<float>(i,4) = bgr[2].data[i] / 255.0;
-////    }
-//    
-//    NSLog(@"test1");
-//    
-//    cv::Mat_<int> clusters(bgr.size(),CV_32SC1);
-//    
-//    int K = 10;
-////    cv::kmeans(bgr, K, bestLabels,
-////               cvTermCriteria( CV_TERMCRIT_EPS+CV_TERMCRIT_ITER, 10, 1.0),
-////               3, cv::KMEANS_PP_CENTERS, centers);
-//    
-//    cv::kmeans(bgr, K, clusters,
-//               cvTermCriteria( CV_TERMCRIT_EPS+CV_TERMCRIT_ITER, 10, 1.0),
-//               1, cv::KMEANS_PP_CENTERS, centers);
-//    
-//    NSLog(@"test2");
-//    
-//    cv::Mat dstImg(input.size(),input.type());
-//    cv::MatIterator_<cv::Vec3f> itf = centers.begin<cv::Vec3f>();
-//    cv::MatIterator_<cv::Vec3b> itd = dstImg.begin<cv::Vec3b>(), itd_end = dstImg.end<cv::Vec3b>();
-//    
-//    for(int i=0; itd != itd_end; ++itd, ++i) {
-//        cv::Vec3f color = itf[clusters(1,i)];
-//        (*itd)[0] = cv::saturate_cast<uchar>(color[2]);
-//        (*itd)[1] = cv::saturate_cast<uchar>(color[1]);
-//        (*itd)[2] = cv::saturate_cast<uchar>(color[0]);
-//    }
-//    
-//    NSLog(@"test3");
-
-    
-//    int colors[K];
-//    for(int i=0; i<K; i++) {
-//        colors[i] = 255/(i+1);//?
-//    }
-//    // i think there is a better way to do this mayebe some Mat::reshape?
-//    clustered = cv::Mat(input.rows, input.cols, CV_32FC3);
-//    for(int i=0; i<input.cols*input.rows; i++) {
-//        clustered.at<float>(i/input.cols, i%input.cols) = (float)(colors[bestLabels.at<int>(0,i)]);//?
-//        //      cout << bestLabels.at<int>(0,i) << " " <<
-//        //              colors[bestLabels.at<int>(0,i)] << " " <<
-//        //              clustered.at<float>(i/src.cols, i%src.cols) << " " <<
-//        //              endl;
-//    }
-    
-//    clustered.convertTo(clustered, CV_8U);
-    
-//    return dstImg;
-    
+{
+    cv::cvtColor(input , input , CV_RGBA2RGB);
     cv::Mat samples(input.rows * input.cols, 3, CV_32F);
-    for( int y = 0; y < input.rows; y++ )
-        for( int x = 0; x < input.cols; x++ )
-            for( int z = 0; z < 3; z++)
+    
+    for( int y = 0; y < input.rows; y++ ){
+        for( int x = 0; x < input.cols; x++ ){
+            for( int z = 0; z < 3; z++){
                 samples.at<float>(y + x*input.rows, z) = input.at<cv::Vec3b>(y,x)[z];
+            }
+        }
+    }
     
-    
-    int clusterCount = 10;
+    int clusterCount = 5;
     cv::Mat labels;
     int attempts = 5;
     cv::Mat centers;
-    kmeans(samples, clusterCount, labels, cv::TermCriteria(CV_TERMCRIT_ITER|CV_TERMCRIT_EPS, 10, 1.0), attempts, cv::KMEANS_PP_CENTERS, centers );
+    kmeans(samples, clusterCount, labels, cv::TermCriteria(CV_TERMCRIT_ITER|CV_TERMCRIT_EPS, 100, 0.01), attempts, cv::KMEANS_PP_CENTERS, centers );
     
     
-    cv::Mat new_image( input.size(), input.type() );
-    for( int y = 0; y < input.rows; y++ )
+    cv::Mat new_image( input.rows, input.cols, input.type());
+    
+    
+    for( int y = 0; y < input.rows; y++ ){
         for( int x = 0; x < input.cols; x++ )
         {
             int cluster_idx = labels.at<int>(y + x*input.rows,0);
@@ -175,8 +127,47 @@
             new_image.at<cv::Vec3b>(y,x)[1] = centers.at<float>(cluster_idx, 1);
             new_image.at<cv::Vec3b>(y,x)[2] = centers.at<float>(cluster_idx, 2);
         }
+    }
     
     return new_image;
+}
+
+- (void)createColorPallet:(cv::Mat)input
+{
+    input = input.reshape(0,1);
+    
+    blueArray = [[NSMutableArray alloc] init];
+    greenArray = [[NSMutableArray alloc] init];
+    redArray = [[NSMutableArray alloc] init];
+    
+    for( int y = 0; y < input.rows; y++ ) {
+        // ポインタの取得
+        cv::Vec3b* ptr = input.ptr<cv::Vec3b>( y );
+        for( int x = 0; x < input.cols; x++ ) {
+            // 値の取得
+            cv::Vec3b bgr = ptr[x];
+            if (ptr[x-1] != ptr[x]) {
+                int tempBlue = bgr[0];
+                [blueArray addObject: [[NSNumber numberWithUnsignedInt:tempBlue] stringValue]];
+                int tempGreen = bgr[1];
+                [greenArray addObject: [[NSNumber numberWithUnsignedInt:tempGreen] stringValue]];
+                int tempRed = bgr[2];
+                [redArray addObject: [[NSNumber numberWithUnsignedInt:tempRed] stringValue]];
+            }
+        }
+    }
+    
+    [blueArray removeDuplicatedObjects];
+    [greenArray removeDuplicatedObjects];
+    [redArray removeDuplicatedObjects];
+}
+
+- (void) addColorToView:(UIView *)view index:(NSInteger)index
+{
+    CGFloat red = [[redArray objectAtIndex:index] floatValue]/255;
+    CGFloat green = [[greenArray objectAtIndex:index] floatValue]/255;
+    CGFloat blue = [[blueArray objectAtIndex:index] floatValue]/255;
+    view.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
 }
 
 #pragma mark - View LifeCycle
@@ -196,8 +187,13 @@
 	// Do any additional setup after loading the view.
     cv::Mat hub = [self cvMatFromUIImage:inputImage];
     cv::Mat hub2 = [self kMeansClustering:(cv::Mat)hub];
-    imageView.image = [self UIImageFromCVMat:hub2];
-
+    [self createColorPallet:hub2];
+    [self addColorToView:firstView index:0];
+    [self addColorToView:secondView index:1];
+    [self addColorToView:thirdView index:2];
+    [self addColorToView:forthView index:3];
+    [self addColorToView:fifthView index:4];
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -8,6 +8,10 @@
 
 #import "CollectionViewCell.h"
 
+@interface CollectionViewCell()
+
+@end
+
 @implementation CollectionViewCell
 
 - (id)initWithFrame:(CGRect)frame

@@ -10,7 +10,11 @@
 
 @interface ColorPalletViewController : UIViewController
 @property (nonatomic) UIImage *inputImage;
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UIView *firstView;
+@property (strong, nonatomic) IBOutlet UIView *secondView;
+@property (strong, nonatomic) IBOutlet UIView *thirdView;
+@property (strong, nonatomic) IBOutlet UIView *forthView;
+@property (strong, nonatomic) IBOutlet UIView *fifthView;
 
 
 @end

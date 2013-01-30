@@ -12,4 +12,5 @@
 
 @property (nonatomic) UIImage *largeImage;
 @property (nonatomic) UIImageView *imageView;
+@property (nonatomic) NSInteger index;
 @end
