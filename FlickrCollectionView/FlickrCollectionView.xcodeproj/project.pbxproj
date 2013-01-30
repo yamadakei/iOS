@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B2703D1D16B916CA00747122 /* NSMutableArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = B2703D1C16B916CA00747122 /* NSMutableArray+Sort.m */; };
+		B2703D2416B9302F00747122 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2703D2316B9302F00747122 /* AsyncImageView.m */; };
+		B2703D2616B939A500747122 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2703D2516B939A500747122 /* libxml2.2.dylib */; };
 		B2A8DF9D169D93E000AE2736 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A8DF9C169D93E000AE2736 /* ImageViewController.m */; };
 		B2AAA0AD169EB94A00AB047D /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2AAA0AC169EB94A00AB047D /* opencv2.framework */; };
 		B2AAA0B0169EC4C300AB047D /* ColorPalletViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2AAA0AF169EC4C300AB047D /* ColorPalletViewController.mm */; };
@@ -35,6 +37,11 @@
 /* Begin PBXFileReference section */
 		B2703D1B16B916CA00747122 /* NSMutableArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Sort.h"; sourceTree = "<group>"; };
 		B2703D1C16B916CA00747122 /* NSMutableArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Sort.m"; sourceTree = "<group>"; };
+		B2703D2216B9302E00747122 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
+		B2703D2316B9302F00747122 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
+		B2703D2516B939A500747122 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		B2703D2716B93C8B00747122 /* XPathQuery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		B2703D2816B93C8C00747122 /* XPathQuery.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		B2A8DF9B169D93E000AE2736 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		B2A8DF9C169D93E000AE2736 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		B2AAA0AC169EB94A00AB047D /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = FlickrCollectionView/opencv2.framework; sourceTree = "<group>"; };
@@ -79,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2703D2616B939A500747122 /* libxml2.2.dylib in Frameworks */,
 				B2AAA0B2169EC8AD00AB047D /* QuartzCore.framework in Frameworks */,
 				B2B69F10169D4C5700580D61 /* UIKit.framework in Frameworks */,
 				B2B69F12169D4C5700580D61 /* Foundation.framework in Frameworks */,
@@ -93,6 +101,7 @@
 		B2B69F00169D4C5700580D61 = {
 			isa = PBXGroup;
 			children = (
+				B2703D2516B939A500747122 /* libxml2.2.dylib */,
 				B2AAA0B1169EC8AD00AB047D /* QuartzCore.framework */,
 				B2B69F15169D4C5700580D61 /* FlickrCollectionView */,
 				B2B69F0E169D4C5700580D61 /* Frameworks */,
@@ -122,6 +131,8 @@
 		B2B69F15169D4C5700580D61 /* FlickrCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				B2703D2716B93C8B00747122 /* XPathQuery.h */,
+				B2703D2816B93C8C00747122 /* XPathQuery.m */,
 				B2B69F52169D5CA600580D61 /* JSON */,
 				B2B69F1E169D4C5700580D61 /* AppDelegate.h */,
 				B2B69F1F169D4C5700580D61 /* AppDelegate.m */,
@@ -137,6 +148,8 @@
 				B2AAA0AF169EC4C300AB047D /* ColorPalletViewController.mm */,
 				B2703D1B16B916CA00747122 /* NSMutableArray+Sort.h */,
 				B2703D1C16B916CA00747122 /* NSMutableArray+Sort.m */,
+				B2703D2216B9302E00747122 /* AsyncImageView.h */,
+				B2703D2316B9302F00747122 /* AsyncImageView.m */,
 			);
 			path = FlickrCollectionView;
 			sourceTree = "<group>";
@@ -254,6 +267,7 @@
 				B2A8DF9D169D93E000AE2736 /* ImageViewController.m in Sources */,
 				B2AAA0B0169EC4C300AB047D /* ColorPalletViewController.mm in Sources */,
 				B2703D1D16B916CA00747122 /* NSMutableArray+Sort.m in Sources */,
+				B2703D2416B9302F00747122 /* AsyncImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,3 +15,13 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#ifdef DEBUG
+# define LOG(...) NSLog(__VA_ARGS__)
+# define LOG_METHOD NSLog(@"%s", __func__)
+# define LOG_LINE NSLog(@"%s line %d", __FILE__, __LINE__)
+#else
+# define LOG(...) ;
+# define LOG_METHOD ;
+# define LOG_LINE ;
+#endif

@@ -8,6 +8,8 @@
 
 #import "CollectionViewController.h"
 #import "Json.h"
+#import "XPathQuery.h"
+#import "AsyncImageView.h"
 
 @interface CollectionViewController ()
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
